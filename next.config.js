@@ -1,5 +1,5 @@
 const path = require('path')
-// const glob = require('glob')
+const glob = require('glob')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const withPlugins = require('next-compose-plugins');
 
@@ -25,7 +25,7 @@ const sassPlugin = {
               outputStyle: 'compressed', // These options are from node-sass: https://github.com/sass/node-sass
               includePaths: ['styles', 'node_modules']
                 .map((d) => path.join(__dirname, d))
-                // .map((g) => glob.sync(g))
+                .map((g) => glob.sync(g))
                 .reduce((a, c) => a.concat(c), [])
             }
           }
